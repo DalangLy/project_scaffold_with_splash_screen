@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 10,
               ),
               ElevatedButton(onPressed: (){
-                Get.toNamed('/login');
+                Get.offNamed('/login');
               }, child: const Text("Try goto Login Screen without logout"),),
             ],
           ),
