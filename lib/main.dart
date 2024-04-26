@@ -11,7 +11,7 @@ import 'middlewares/ensure_not_authed_middleware.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  // disable getx log
+  // disable getx log (likes dependencies injection etc..)
   Get.isLogEnable = false;
 
   // inject dependencies
