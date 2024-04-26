@@ -11,6 +11,9 @@ import 'middlewares/ensure_not_authed_middleware.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
+  // disable getx log
+  Get.isLogEnable = false;
+
   // inject dependencies
   // put async
   final sharedPrefs = await SharedPreferences.getInstance();
@@ -24,10 +27,6 @@ Future<void> main() async{
   runApp(SplashScreen(themeMode: themeMode));
 
   await Future.delayed(const Duration(seconds: 2));
-
-
-  // disable getx log
-  Get.isLogEnable = false;
 
   runApp(
     GetMaterialApp(
