@@ -31,18 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 10,
               ),
               ObxValue(
-                    (data) => Switch(
-                  value: _isDarkMode.value,
-                  onChanged: (val) {
-                    _isDarkMode.value = val;
-                    _changeTheme();
-                  },
-                ),
+                (data) {
+                  return IconButton(
+                    onPressed: (){
+                      _isDarkMode.value = !_isDarkMode.value;
+                      _changeTheme();
+                    },
+                    icon: _isDarkMode.value ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode),
+                  );
+                },
                 false.obs,
-              ),
-              IconButton(
-                onPressed: _changeTheme,
-                icon: Get.isDarkMode ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode),
               ),
               const SizedBox(
                 height: 10,
