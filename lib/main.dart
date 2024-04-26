@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:next_pr/features/login/login_screen.dart';
 import 'package:next_pr/middlewares/ensure_auth_middleware.dart';
+import 'package:next_pr/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/services/auth_service.dart';
 import 'features/home/home_screen.dart';
@@ -16,26 +17,11 @@ Future<void> main() async{
   Get.put(sharedPrefs);
 
   // load theme color
-  final x = Get.find<SharedPreferences>();
-  final ThemeMode themeMode = x.getBool("isDarkMode") == null ? ThemeMode.system : (x.getBool("isDarkMode")! ? ThemeMode.dark : ThemeMode.light);
-
+  final ThemeMode themeMode = sharedPrefs.getBool("isDarkMode") == null ? ThemeMode.system : (sharedPrefs.getBool("isDarkMode")! ? ThemeMode.dark : ThemeMode.light);
 
 
   //show splash screen
-  runApp(
-      MaterialApp(
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      themeMode: themeMode,
-      home: const Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Text("Splash Screen"),
-          ),
-        ),
-      ),
-    )
-  );
+  runApp(SplashScreen(themeMode: themeMode));
 
   await Future.delayed(const Duration(seconds: 2));
 

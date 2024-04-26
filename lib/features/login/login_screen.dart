@@ -9,6 +9,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -22,6 +23,14 @@ class LoginScreen extends StatelessWidget {
                 },
                 child: const Text("Login"),
               ),
+              const SizedBox(height: 10,),
+              ElevatedButton(
+                onPressed: (){
+                  AuthService.to.login();
+                },
+                child: const Text("Logout but not redirect to home screen"),
+              ),
+              const SizedBox(height: 10,),
               ElevatedButton(
                 onPressed: () {
                   final thenTo = context.params['then'];
